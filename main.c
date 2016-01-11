@@ -9,3 +9,11 @@
 /*   Updated: 2100/01/01 00:00:00 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "lib.h"
+
+int		main(int argc, char **argv)
+{
+	valid_tet(argv[1]);
+	return (0);
+}
