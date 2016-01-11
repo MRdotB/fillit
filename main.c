@@ -14,6 +14,6 @@
 
 int		main(int argc, char **argv)
 {
-	valid_tet(argv[1]);
+	printf("%d\n",valid_tet(argv[1]));
 	return (0);
 }

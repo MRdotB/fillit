@@ -16,14 +16,20 @@ int			*g_tet;
 
 static int	valid_tet_ex(int fd)
 {
+	int		d;
 	int		i;
 	int		k;
 	char	tmp;
 
+	d = 0;
 	i = 0;
 	k = 0;
 	while (read(fd, &tmp, 1) || tmp == '.' || tmp == '#' || tmp == '\n')
 	{
+		if (tmp == '#')
+			d++;
+		if (d > 4)
+			return (0);
 		if (i++ == 5)
 			return (0);
 		if (tmp == '\n')
@@ -31,7 +37,7 @@ static int	valid_tet_ex(int fd)
 			i = 0;
 			k++;
 		}
-		if (k == 4)
+		if (k == 4 && d == 4)
 			return (1);
 	}
 }
