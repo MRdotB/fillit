@@ -1,0 +1,3 @@
+[submodule "MyLibft"]
+	path = MyLibft
+	url = https://github.com/NikolaiiGuillaumeLodenos/MyLibft
