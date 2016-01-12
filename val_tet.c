@@ -14,7 +14,7 @@
 
 int			*g_tet;
 
-static int	valid_tet_ex(int fd)
+static int	valid_tet_ex(int fd)	// 24 lines
 {
 	int		d;
 	int		i;
@@ -42,7 +42,7 @@ static int	valid_tet_ex(int fd)
 	}
 }
 
-int			valid_tet(char *file)
+int			valid_tet(char *file)	// 19 lines
 {
 	int		fd;
 	int		i;
