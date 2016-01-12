@@ -13,6 +13,7 @@
 #include "lib.h"
 
 int			*g_tet;
+int			g_len_tet;
 
 static int	valid_tet_ex(int fd)	// 24 lines
 {
@@ -42,7 +43,7 @@ static int	valid_tet_ex(int fd)	// 24 lines
 	}
 }
 
-int			valid_tet(char *file)	// 19 lines
+int			valid_tet(char *file)	// 21 lines
 {
 	int		fd;
 	int		i;
@@ -57,7 +58,9 @@ int			valid_tet(char *file)	// 19 lines
 			return (0);
 		if (!read(fd, &tmp, 1))
 		{
-			g_tet = (int*)malloc(sizeof(g_tet) * i);
+			if(!(g_tet = (int*)malloc(sizeof(g_tet) * i)))
+				return (0);
+			g_len_tet = i - 1;
 			return (1);
 		}
 		if (tmp != '\n')
@@ -65,7 +68,36 @@ int			valid_tet(char *file)	// 19 lines
 	}
 }
 
-int		load_tet(char *file)
+static int	load_tet_ex(char **tmp)
 {
-	return (0);
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	return (1);
+}
+
+int			load_tet(char *file)	// 20 lines
+{
+	int		fd;
+	int		i;
+	int		k;
+	char	**tmp;
+
+	k = 0;
+	if (!(tmp = (char**)matrix_sqrt(6, 5)))
+		return (0);
+	if (!(fd = open(file ,O_RDONLY)))
+		return (0);
+	while (g_len_tet--)
+	{
+		i = 0;
+		while (read(fd, tmp[i], 5) && i < 3)
+			i++;
+		read(fd, &tmp[i][4], 1);
+		if(!(g_tet[k++] = load_tet_ex(tmp)))
+			return (0);
+	}
+	return (1);
 }
