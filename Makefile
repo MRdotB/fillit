@@ -6,32 +6,62 @@
 #    By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/12 16:21:36 by bchaleil          #+#    #+#              #
-#    Updated: 2016/01/12 16:27:47 by bchaleil         ###   ########.fr        #
+#    Updated: 2016/01/12 17:17:31 by bchaleil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fillit
-SRC	=\
-		main.c\
-		solve_fill_it.c\
-		val_tet.c
 
-OBJ = $(SRC:.c=.o)
-CC = gcc
-CFLAGS =
+CC				=	gcc
+NAME			=	fillit
+FLAGS			=
+LIB_PATH		=	libft/
+LIB				=	$(LIB_PATH)libft.a
+LIB_LINK		=	-L $(LIB_PATH) -lft
+INCLUDES		=	-I $(LIB_PATH) -I ./includes
+SRCS			=\
+					srcs/main.c\
+					srcs/solve_fill_it.c\
+					srcs/val_tet.c
+OBJS			=	$(SRCS:srcs/%.c=obj/%.o)
 
-all: $(NAME)
+# COLORS
+C_NO			=	"\033[00m"
+C_OK			=	"\033[34m"
+C_GOOD			=	"\033[32m"
+C_ERROR			=	"\033[31m"
+C_WARN			=	"\033[33m"
 
-$(NAME):
-	@$(CC) -c $(CFLAGS) $(SRC)
-	@$(CC) -o $(NAME) $(OBJ)
+# DBG MESSAGE
+SUCCESS			=	[ $(C_GOOD)OK$(C_NO) ]
+OK				=	[ $(C_OK)OK$(C_NO) ]
+
+
+all: obj $(NAME)
+
+$(NAME): $(LIB) $(OBJS)
+	@$(CC) $(FLAGS) -o $@ $^ $(LIB_LINK)
+	@echo "Compiling" $(NAME) "\t\t" $(SUCCESS)
+
+$(LIB):
+	@make -C $(LIB_PATH)
+
+obj:
+	@mkdir -p obj
+
+obj/%.o: srcs/%.c ./includes/*.h
+	@$(CC) $(FLAGS) $(INCLUDES) -c -o $@ $<
+	@echo "Linking" $< "\t" $(OK)
 
 clean:
-	@rm -rf $(OBJ)
+	@rm -f $(OBJS)
+	@rm -rf obj
+	@echo "Cleaning" $(NAME) "\t\t" $(OK)
 
 fclean: clean
-	@rm -rf $(NAME)
+	@rm -f $(NAME)
+	@make -C $(LIB_PATH) fclean
+	@echo "Delete" $(NAME) "\t\t\t" $(OK)
 
-re: fclean $(NAME)
+re: fclean all
 
-.PHONY: all $(NAME) clean fclean re
+.PHONY:all $(NAME) $(LIB) obj clean fclean re
