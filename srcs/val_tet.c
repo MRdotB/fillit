@@ -68,14 +68,50 @@ int			valid_tet(char *file)	// 21 lines
 	}
 }
 
-static int	load_tet_ex(char **tmp)
+static char	*load_tet_ex_sub(char **tmp, int x, int y)	// 23 lines
 {
 	int		i;
-	int		j;
+	int		n;
+	char	*sav;
 
 	i = 0;
-	j = 0;
-	return (1);
+	n = 0;
+	sav = (char*)malloc(sizeof(*sav) * 17);
+	sav[i++] = tmp[y][x++];
+	while (n < 3 && tmp[y][x])
+	{
+		if (tmp[y][x] == '\n')
+		{
+			x = 0;
+			y++;
+		}
+		else
+		{
+			sav[i++] = tmp[y][x];
+			if (tmp[y][x++] == '#')
+				n++;
+		}
+	}
+	return (sav);
+}
+
+static int	load_tet_ex(char **tmp)	// No finished
+{
+	int		x;
+	int		y;
+
+	y = -1;
+	while (tmp[++y][0])
+	{
+		x = -1;
+		while (tmp[y][++x] != '\n')
+			if (tmp[y][x] == '#')
+			{
+				ft_putstr(load_tet_ex_sub(tmp, x, y));
+				ft_putchar('\n');
+				return (1);
+			}
+	}
 }
 
 int			load_tet(char *file)	// 20 lines
