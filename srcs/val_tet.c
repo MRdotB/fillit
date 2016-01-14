@@ -95,7 +95,7 @@ static char	*load_tet_ex_sub(char **tmp, int x, int y)	// 23 lines
 	return (sav);
 }
 
-static int	load_tet_ex(char **tmp)	// No finished
+static int	load_tet_ex(char **tmp)	// 11 lines
 {
 	int		x;
 	int		y;
@@ -106,11 +106,7 @@ static int	load_tet_ex(char **tmp)	// No finished
 		x = -1;
 		while (tmp[y][++x] != '\n')
 			if (tmp[y][x] == '#')
-			{
-				ft_putstr(load_tet_ex_sub(tmp, x, y));
-				ft_putchar('\n');
-				return (1);
-			}
+				return (sig_tet(load_tet_ex_sub(tmp, x, y)));
 	}
 }
 

@@ -17,24 +17,8 @@
 # include <sys/stat.h>
 # include <sys/types.h>
 
-// Signature Topologique des pièces
-# define A "#...##...#"
-# define B "##.##"
-# define C "#..##..#"
-# define D "##...##"
-# define E "#...#..##"
-# define F "#...###"
-# define G "##..#...#"
-# define H "###...#"
-# define I "#...#...##"
-# define J "###.#"
-# define K "##...#...#"
-# define L "#.###"
-# define M "##..##"
-# define N "#...#...#...#"
-# define O "####"
-
 int		load_tet(char *file);
+int		sig_tet(char *tet);
 int		valid_tet(char *file);
 
 #endif

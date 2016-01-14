@@ -20,6 +20,7 @@ LIB_LINK		=	-L $(LIB_PATH) -lft
 INCLUDES		=	-I $(LIB_PATH) -I ./includes
 SRCS			=\
 					srcs/main.c\
+					srcs/signature.c\
 					srcs/solve_fill_it.c\
 					srcs/val_tet.c
 OBJS			=	$(SRCS:srcs/%.c=obj/%.o)
