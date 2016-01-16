@@ -6,7 +6,7 @@
 #    By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/12 16:21:36 by bchaleil          #+#    #+#              #
-#    Updated: 2016/01/12 17:17:31 by bchaleil         ###   ########.fr        #
+#    Updated: 2016/01/16 16:19:17 by bchaleil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,9 +20,8 @@ LIB_LINK		=	-L $(LIB_PATH) -lft
 INCLUDES		=	-I $(LIB_PATH) -I ./includes
 SRCS			=\
 					srcs/main.c\
-					srcs/signature.c\
-					srcs/solve_fill_it.c\
-					srcs/val_tet.c
+					srcs/fillit.c\
+					srcs/show_method.c
 OBJS			=	$(SRCS:srcs/%.c=obj/%.o)
 
 # COLORS

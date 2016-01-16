@@ -1,13 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solve_fill_it.c                                    :+:      :+:    :+:   */
+/*   show_method.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2100/01/01 00:00:00 by glodenos          #+#    #+#             */
-/*   Updated: 2100/01/01 00:00:00 by glodenos         ###   ########.fr       */
+/*   Created: 2016/01/16 16:11:43 by bchaleil          #+#    #+#             */
+/*   Updated: 2016/01/16 16:17:41 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib.h"
+static void	ft_putstr_err(char *str)
+{
+	write(2, str, (ft_strlen(str) - 1));
+}
+
+void		show_usage(void)
+{
+	ft_putstr_err("fillit: missing file operand\n");
+}
+
+void		show_error(void)
+{
+	ft_putstr_err("error\n");
+}

@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   fillit.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2100/01/01 00:00:00 by glodenos          #+#    #+#             */
-/*   Updated: 2016/01/16 16:17:51 by bchaleil         ###   ########.fr       */
+/*   Created: 2016/01/16 15:58:15 by bchaleil          #+#    #+#             */
+/*   Updated: 2016/01/16 16:17:44 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
 
-int		main(int ac, char **av)
+void	fillit(int ac, char **av)
 {
-	fillit(ac, av);
-	return (0);
+	if (ac != 2)
+		return (show_usage());	
 }

@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2100/01/01 00:00:00 by glodenos          #+#    #+#             */
-/*   Updated: 2100/01/01 00:00:00 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/01/16 16:17:47 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include <sys/stat.h>
 # include <sys/types.h>
 
-int		load_tet(char *file);
-int		sig_tet(char *tet);
-int		valid_tet(char *file);
+void	fillit(int ac, char **av);
+void	show_usage(void);
+void	show_error(void);
 
 #endif
