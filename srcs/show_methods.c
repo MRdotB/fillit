@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   show_method.c                                      :+:      :+:    :+:   */
+/*   show_methods.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/16 16:11:43 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/01/16 16:17:41 by bchaleil         ###   ########.fr       */
+/*   Created: 2016/01/16 18:44:46 by bchaleil          #+#    #+#             */
+/*   Updated: 2016/01/16 18:44:48 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 static void	ft_putstr_err(char *str)
 {
-	write(2, str, (ft_strlen(str) - 1));
+	write(2, str, (ft_strlen(str)));
 }
 
 void		show_usage(void)

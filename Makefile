@@ -6,7 +6,7 @@
 #    By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/12 16:21:36 by bchaleil          #+#    #+#              #
-#    Updated: 2016/01/16 16:19:17 by bchaleil         ###   ########.fr        #
+#    Updated: 2016/01/16 18:44:59 by bchaleil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ INCLUDES		=	-I $(LIB_PATH) -I ./includes
 SRCS			=\
 					srcs/main.c\
 					srcs/fillit.c\
-					srcs/show_method.c
+					srcs/show_methods.c
 OBJS			=	$(SRCS:srcs/%.c=obj/%.o)
 
 # COLORS
