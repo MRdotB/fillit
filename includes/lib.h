@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2100/01/01 00:00:00 by glodenos          #+#    #+#             */
-/*   Updated: 2016/01/16 18:45:55 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/01/17 17:37:27 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 void	fillit(int ac, char **av);
 void	show_usage(void);
-void	show_error(void);
+int		show_error(void);
+void	check_error1(char *file_name);
 
 #endif
