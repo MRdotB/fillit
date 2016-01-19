@@ -12,17 +12,16 @@
 
 #ifndef LIB_H
 # define LIB_H
+# include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
 # include <sys/stat.h>
 # include <sys/types.h>
 # include <stdio.h>
+# include "libft.h"
+# define SAP(c) (c == '#')
+# define EDGE(m, i) (m[i - 1] == '#' || m[i + 1] == '#'|| m[i + 5] == '#' || m[i - 5] == '#')
 
-void	fillit(int ac, char **av);
-void	show_usage(void);
-void	show_error(void);
-int		check_error1(char *file_name);
-int		*get_signatures(void);
 
 typedef struct	s_tetrimino
 {
@@ -31,5 +30,15 @@ typedef struct	s_tetrimino
 	int					signature;
 	struct s_tetrimino	*next;
 }				t_tetrimino;
+
+void			fillit(int ac, char **av);
+void			show_usage(void);
+void			show_error(void);
+int				check_error1(char *file_name);
+int				*get_signatures(void);
+char			*get_matrice(char *file_name);
+t_tetrimino		*get_tetriminos(char *file_name);
+t_tetrimino		*bc_create_elem(int id, int signature);
+void			bc_add_elem(t_tetrimino *el);
 
 #endif

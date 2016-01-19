@@ -10,10 +10,9 @@
 #                                                                              #
 # **************************************************************************** #
 
-
 CC				=	gcc
 NAME			=	fillit
-FLAGS			=
+FLAGS			=	-Wall -Werror -Wextra
 LIB_PATH		=	libft/
 LIB				=	$(LIB_PATH)libft.a
 LIB_LINK		=	-L $(LIB_PATH) -lft
@@ -24,7 +23,9 @@ SRCS			=\
 					srcs/show_methods.c\
 					srcs/check_error1.c\
 					srcs/get_tetriminos.c\
-					srcs/get_signatures.c
+					srcs/get_matrice.c\
+					srcs/get_signatures.c\
+					srcs/bc_create_elem.c
 OBJS			=	$(SRCS:srcs/%.c=obj/%.o)
 
 # COLORS
