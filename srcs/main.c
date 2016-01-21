@@ -12,7 +12,7 @@
 
 #include "lib.h"
 
-int		main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	fillit(ac, av);
 	return (0);
