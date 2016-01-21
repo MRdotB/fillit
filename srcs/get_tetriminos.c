@@ -12,40 +12,6 @@
 
 #include "lib.h"
 
-static char		*bt_concat(char c, char *str)
-{
-	char	*r;
-	int		i;
-
-	r = (char*)malloc(ft_strlen(str) + 2);
-	i = 0;
-	while (str[i])
-	{
-		r[i] = str[i];
-		i++;
-	}
-	r[i] = c;
-	i++;
-	r[i] = '\0';
-	free(str);
-	return (r);
-}
-
-char			*get_matrice(char *file_name)
-{
-	int fd;
-	char buf;
-	char *r;
-
-	r = malloc(1);
-	r[0] = '\0';
-	fd = open(file_name, O_RDONLY);
-	while (read(fd, &buf, 1))
-		r = bt_concat(buf, r);
-	close(fd);
-	return (r);
-}
-
 static int		get_cursor_pos(char *matrice)
 {
 	int		i;
@@ -74,43 +40,69 @@ static int		get_cursor_pos(char *matrice)
 	return (ret);
 }
 
-t_tetrimino		*get_tetriminos(char *file_name)
+static	int		get_code(char *matrice)
 {
-	int			i;
-	int			j;
-	int			k;
-	int			*sign;
-	char		*matrice;
-	int			code;
-	int			pos;
-	t_tetrimino *first;
+	int	pos;
+	int i;
+	int j;
+	int code;
 
-	i = 0;
-	k = 1;
+	pos = get_cursor_pos(matrice);
+	i = pos;
 	j = 1;
 	code = 0;
-	sign = get_signatures();
-	matrice = get_matrice(file_name);
-	pos		= get_cursor_pos(matrice);
-	i		= pos;
-
-	while (matrice[i])
+	while (i < 20)
 	{
-		if (matrice[i] == '#')
+		if (matrice[i] == '#' && EDGE(matrice, i))
 		{
 			code *= 10;
 			code += j;
 		}
-			j++;
+		j++;
 		if (matrice[i] == '\n')
 		{
-			j = 0;
+			j = 1;
 			i += pos;
 		}
-		else
-			i++;
+		i++;
 	}
-	printf("\n%d", get_cursor_pos(matrice));
-	printf("\n%d", code);
-	return (first);
+	return (code);
+}
+
+static	int		valid_tetramino(int code)
+{
+	int	*signatures;
+	int i;
+
+	signatures = get_signatures();
+	i = 0;
+	while (signatures[i] != -1337)
+		if (signatures[i++] == code)
+			return (1);	
+	return (0);
+}
+
+int		get_tetriminos(char *file_name, t_tetrimino **tetri_list)
+{
+	char		*matrice;
+	int			tetraminos_count;
+	int			i;
+	int			code;
+
+	matrice = get_matrice(file_name);
+	tetraminos_count = ((ft_strlen(matrice) + 1) / 21);
+	i = 0;
+	while (i < tetraminos_count)
+	{
+		code = get_code(matrice + (21 * i));
+		if (valid_tetramino(code))
+			bc_list_push(tetri_list, i, code);	
+		else
+		{
+			printf("\ncode = %d", code);
+			return (0);
+		}
+		i++;
+	}
+	return (1);
 }
