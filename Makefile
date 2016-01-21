@@ -25,7 +25,10 @@ SRCS			=\
 					srcs/get_tetriminos.c\
 					srcs/get_matrice.c\
 					srcs/get_signatures.c\
-					srcs/bc_create_elem.c
+					srcs/bc_create_elem.c\
+					srcs/bc_list_push.c\
+					srcs/create_matrice.c\
+					srcs/solve.c
 OBJS			=	$(SRCS:srcs/%.c=obj/%.o)
 
 # COLORS
