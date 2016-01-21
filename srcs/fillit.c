@@ -14,9 +14,13 @@
 
 void	fillit(int ac, char **av)
 {
+	t_tetrimino	*tetri_list;
+
 	if (ac != 2)
 		return (show_usage());	
 	if ((check_error1(av[1])) == 0)
 		return (show_error());
-	get_tetriminos(av[1]);
+	if ((get_tetriminos(av[1], &tetri_list)) == 0)
+		return (show_error());
+	solve(tetri_list);
 }
