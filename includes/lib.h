@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2100/01/01 00:00:00 by glodenos          #+#    #+#             */
-/*   Updated: 2016/01/18 15:01:39 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/01/22 13:36:51 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,19 @@ typedef struct	s_tetrimino
 	struct s_tetrimino	*next;
 }				t_tetrimino;
 
+typedef struct	s_pos
+{
+	int	x;
+	int	y;
+}				t_pos;
+
+typedef struct	s_matrice
+{
+	char	**map;
+	int		size_x;
+	int		size_y;
+}				t_matrice;
+
 void			fillit(int ac, char **av);
 void			show_usage(void);
 void			show_error(void);
@@ -41,6 +54,6 @@ int				get_tetriminos(char *file_name, t_tetrimino **tetri_list);
 t_tetrimino		*bc_create_elem(int id, int signature);
 void			bc_list_push(t_tetrimino **list, int id, int signature);
 void			solve(t_tetrimino *tetri_list);
-char			**create_matrice(unsigned int x, unsigned int y);
+t_matrice		create_matrice(unsigned int x, unsigned int y);
 
 #endif

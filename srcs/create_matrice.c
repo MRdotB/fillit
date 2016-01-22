@@ -1,16 +1,20 @@
 #include "lib.h"
 
-char	**create_matrice(unsigned int x, unsigned int y)
+t_matrice	create_matrice(unsigned int x, unsigned int y)
 {
-	char			**matrice;
+	t_matrice		matrice;	
+	char			**map;
 	unsigned int	i;
 
-	matrice = (char**)malloc(sizeof(char**) * y);
+	map = (char**)malloc(sizeof(char**) * y);
 	i = 0;
 	while (i < y)
 	{
-		matrice[i] = (char*)malloc(sizeof(char*) * (x + 1));
+		map[i] = (char*)malloc(sizeof(char*) * (x));
 		i++;
 	}
+	matrice.map = map;
+	matrice.size_x = x - 1;
+	matrice.size_y = y - 1;
 	return (matrice);
 }

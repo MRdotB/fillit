@@ -6,13 +6,13 @@
 #    By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/12 16:21:36 by bchaleil          #+#    #+#              #
-#    Updated: 2016/01/18 15:56:25 by bchaleil         ###   ########.fr        #
+#    Updated: 2016/01/22 12:14:33 by bchaleil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC				=	gcc
 NAME			=	fillit
-FLAGS			=	-Wall -Werror -Wextra
+FLAGS			=	
 LIB_PATH		=	libft/
 LIB				=	$(LIB_PATH)libft.a
 LIB_LINK		=	-L $(LIB_PATH) -lft
