@@ -1,6 +1,25 @@
 #include "lib.h"
 
-t_matrice	create_matrice(unsigned int x, unsigned int y)
+static t_matrice	fill_matrice(t_matrice matrice)
+{
+	int x;
+	int y;
+
+	y = 0;
+	while (y < matrice.size_y)
+	{
+		x = 0;
+		while (x < matrice.size_x)
+		{
+			matrice.map[y][x] = '.';
+			x++;
+		}
+		y++;
+	}
+	return (matrice);
+}
+
+t_matrice			create_matrice(unsigned int x, unsigned int y)
 {
 	t_matrice		matrice;	
 	char			**map;
@@ -16,5 +35,5 @@ t_matrice	create_matrice(unsigned int x, unsigned int y)
 	matrice.map = map;
 	matrice.size_x = x - 1;
 	matrice.size_y = y - 1;
-	return (matrice);
+	return (fill_matrice(matrice));	
 }
