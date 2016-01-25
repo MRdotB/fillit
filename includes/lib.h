@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2100/01/01 00:00:00 by glodenos          #+#    #+#             */
-/*   Updated: 2016/01/22 13:36:51 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/01/25 19:59:52 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,8 @@ t_tetrimino		*bc_create_elem(int id, int signature);
 void			bc_list_push(t_tetrimino **list, int id, int signature);
 void			solve(t_tetrimino *tetri_list);
 t_matrice		create_matrice(unsigned int x, unsigned int y);
+int				check_fill(int code, t_matrice matrice, t_pos pos);
+char			**fill(int code, t_matrice matrice, t_pos pos);
+char			**unfill(int code, t_matrice matrice, t_pos pos);
 
 #endif

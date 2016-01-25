@@ -6,7 +6,7 @@
 #    By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/12 16:21:36 by bchaleil          #+#    #+#              #
-#    Updated: 2016/01/22 12:14:33 by bchaleil         ###   ########.fr        #
+#    Updated: 2016/01/25 18:50:01 by bchaleil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRCS			=\
 					srcs/bc_create_elem.c\
 					srcs/bc_list_push.c\
 					srcs/create_matrice.c\
+					srcs/fill_methods.c\
 					srcs/solve.c
 OBJS			=	$(SRCS:srcs/%.c=obj/%.o)
 
