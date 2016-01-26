@@ -1,6 +1,6 @@
 #include "lib.h"
 
-t_tetrimino		*bc_create_elem(int id, int signature)
+t_tetrimino		*bc_create_elem(int id, int code)
 {
 	t_tetrimino	*tetrimino;
 
@@ -8,7 +8,7 @@ t_tetrimino		*bc_create_elem(int id, int signature)
 		return (NULL);
 	tetrimino->id = id;
 	tetrimino->used = 0;
-	tetrimino->signature = signature;
+	tetrimino->code = code;
 	tetrimino->next = NULL;
 	return tetrimino;
 }
