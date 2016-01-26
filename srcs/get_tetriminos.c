@@ -6,7 +6,7 @@
 /*   By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 15:04:36 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/01/18 21:30:38 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/01/26 17:46:43 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,13 +71,13 @@ static	int		get_code(char *matrice)
 
 static	int		valid_tetramino(int code)
 {
-	int	*signatures;
+	int	*codes;
 	int i;
 
-	signatures = get_signatures();
+	codes = get_codes();
 	i = 0;
-	while (signatures[i] != -1337)
-		if (signatures[i++] == code)
+	while (codes[i] != -1337)
+		if (codes[i++] == code)
 			return (1);	
 	return (0);
 }
