@@ -6,7 +6,7 @@
 #    By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/12 16:21:36 by bchaleil          #+#    #+#              #
-#    Updated: 2016/01/25 18:50:01 by bchaleil         ###   ########.fr        #
+#    Updated: 2016/01/26 17:45:21 by bchaleil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRCS			=\
 					srcs/check_error1.c\
 					srcs/get_tetriminos.c\
 					srcs/get_matrice.c\
-					srcs/get_signatures.c\
+					srcs/get_codes.c\
 					srcs/bc_create_elem.c\
 					srcs/bc_list_push.c\
 					srcs/create_matrice.c\
