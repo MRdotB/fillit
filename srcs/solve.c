@@ -6,7 +6,7 @@
 /*   By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 11:54:37 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/01/25 22:23:49 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/01/26 18:40:11 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ void	display_matrice(t_matrice matrice)
 	int x;
 
 	y = 0;
-	while (y < matrice.size_y)
+	while (y <= matrice.size_y)
 	{
 		x = 0;
-		while (x < matrice.size_x)
+		while (x <= matrice.size_x)
 		{
 			ft_putchar(matrice.map[y][x]);	
 			x++;
@@ -54,17 +54,16 @@ char	**recurse_solve(t_matrice matrice, t_tetrimino *tetri_list, t_pos pos)
 
 	if (tetri_list == NULL)
 		return (matrice.map);
-	if ((pos.x == matrice.size_x && pos.y == matrice.size_y))
+	if ((pos.x == matrice.size_x - 1 && pos.y == matrice.size_y - 1))
 		return (NULL);
-	if (check_fill(tetri_list->signature, matrice, pos))
+	if (check_fill(*tetri_list, matrice, pos))
 	{
-		matrice.map = fill(tetri_list->signature, matrice, pos);
+		matrice.map = fill(*tetri_list, matrice, pos);
 		tetri_list->used = 1;
 		tmp = recurse_solve(matrice, tetri_list->next, return_pos(0, 0));
 		if (tmp == NULL)
 		{
-			matrice.map = unfill(tetri_list->signature, matrice, pos);
-			tetri_list->used = 0;
+			matrice.map = unfill(*tetri_list, matrice, pos);
 			return (recurse_solve(matrice, tetri_list, return_pos_modulo(pos, matrice.size_y)));
 		}
 		return (tmp);
@@ -75,17 +74,17 @@ char	**recurse_solve(t_matrice matrice, t_tetrimino *tetri_list, t_pos pos)
 void	solve(t_tetrimino *tetri_list)
 {
 	t_matrice		matrice;
-	int				len = 8;
+	int				len = 2;
 
 	matrice = create_matrice(len, len);
-	matrice.map = recurse_solve(matrice, tetri_list, return_pos(0, 0));
-	display_matrice(matrice);
-/*
+	if (matrice.map == NULL)
+		printf("lourd");
 	while ((matrice.map = recurse_solve(matrice, tetri_list, return_pos(0, 0))) == NULL)
 	{
-		
+		free(matrice.map);
+		matrice = create_matrice(len, len);
+		len++;
 	}
-	//if (matrice)
+	if (matrice.map)
 		display_matrice(matrice);
-*/
 }
