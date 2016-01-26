@@ -6,7 +6,7 @@
 /*   By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 11:54:37 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/01/26 18:40:11 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/01/26 20:27:47 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	**recurse_solve(t_matrice matrice, t_tetrimino *tetri_list, t_pos pos)
 
 	if (tetri_list == NULL)
 		return (matrice.map);
-	if ((pos.x == matrice.size_x - 1 && pos.y == matrice.size_y - 1))
+	if ((pos.x == matrice.size_x && pos.y == matrice.size_y))
 		return (NULL);
 	if (check_fill(*tetri_list, matrice, pos))
 	{
@@ -64,11 +64,11 @@ char	**recurse_solve(t_matrice matrice, t_tetrimino *tetri_list, t_pos pos)
 		if (tmp == NULL)
 		{
 			matrice.map = unfill(*tetri_list, matrice, pos);
-			return (recurse_solve(matrice, tetri_list, return_pos_modulo(pos, matrice.size_y)));
+			return (recurse_solve(matrice, tetri_list, return_pos_modulo(pos, matrice.size_y + 1)));
 		}
 		return (tmp);
 	}
-	return (recurse_solve(matrice, tetri_list, return_pos_modulo(pos, matrice.size_y)));
+	return (recurse_solve(matrice, tetri_list, return_pos_modulo(pos, matrice.size_y + 1)));
 }
 
 void	solve(t_tetrimino *tetri_list)
