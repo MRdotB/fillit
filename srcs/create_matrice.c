@@ -6,10 +6,10 @@ static t_matrice	fill_matrice(t_matrice matrice)
 	int y;
 
 	y = 0;
-	while (y < matrice.size_y)
+	while (y <= matrice.size_y)
 	{
 		x = 0;
-		while (x < matrice.size_x)
+		while (x <= matrice.size_x)
 		{
 			matrice.map[y][x] = '.';
 			x++;
