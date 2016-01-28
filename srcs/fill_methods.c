@@ -12,16 +12,16 @@
 
 #include "lib.h"
 
-int		check_fill_ex(t_tetrimino tetrimino, t_matrice matrice, t_pos pos)
+static int	valid_pos(t_matrice matrice, t_pos pos)
 {
-		if (pos.x >= 0 && pos.y >= 0 && pos.x <= matrice.size_x && pos.y <= matrice.size_y)
-		{
-			if (ISUPPER(matrice.map[pos.y][pos.x]))
-				return (0);
-		}
-		else
+	if (pos.x >= 0 && pos.y >= 0 && pos.x <= matrice.size_x && pos.y <= matrice.size_y)
+	{
+		if (ISUPPER(matrice.map[pos.y][pos.x]))
 			return (0);
-
+		return (1);
+	}
+	else
+		return (0);
 }
 
 int		check_fill(t_tetrimino tetrimino, t_matrice matrice, t_pos pos)
@@ -32,7 +32,6 @@ int		check_fill(t_tetrimino tetrimino, t_matrice matrice, t_pos pos)
 
 	d = 1000;
 	last = 0;
-	tmp = 0;
 	while (d != 0)
 	{
 		tmp = tetrimino.code / d;
@@ -47,7 +46,7 @@ int		check_fill(t_tetrimino tetrimino, t_matrice matrice, t_pos pos)
 		}
 		else if (last < tmp && last != 0)
 			pos.x -= last - tmp;
-		if (!(check_fill_ex(tetrimino, matrice, pos)))
+		if (!(valid_pos(matrice, pos)))
 			return (0);
 		last = tmp;
 	}
