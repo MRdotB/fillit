@@ -22,5 +22,7 @@ void	fillit(int ac, char **av)
 		return (show_error());
 	if ((get_tetriminos(av[1], &tetri_list)) == 0)
 		return (show_error());
+	if (tetri_list == NULL)
+		return (show_error());
 	solve(tetri_list);
 }
