@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bc_create_elem.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bchaleil </var/mail/bchaleil>              +#+  +:+       +#+        */
+/*   By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/28 21:07:36 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/01/28 21:58:22 by bchaleil         ###   ########.fr       */
+/*   Created: 2016/01/28 22:48:31 by bchaleil          #+#    #+#             */
+/*   Updated: 2016/01/28 22:48:35 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
