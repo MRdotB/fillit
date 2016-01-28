@@ -6,7 +6,7 @@
 /*   By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 14:59:30 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/01/27 15:00:41 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/01/28 21:00:58 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ static char		*bt_concat(char c, char *str)
 
 char			*get_matrice(char *file_name)
 {
-	int fd;
-	char buf;
-	char *r;
+	int		fd;
+	char	buf;
+	char	*r;
 
 	r = (char*)malloc(sizeof(char) * 1);
 	if (r == NULL)

@@ -6,7 +6,7 @@
 /*   By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 18:47:04 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/01/27 18:17:43 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/01/28 21:04:30 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 static int	valid_pos(t_matrice matrice, t_pos pos)
 {
-	if (pos.x >= 0 && pos.y >= 0 && pos.x <= matrice.size_x && pos.y <= matrice.size_y)
+	if (pos.x >= 0 && pos.y >= 0 &&
+			pos.x <= matrice.size_x && pos.y <= matrice.size_y)
 	{
 		if (ISUPPER(matrice.map[pos.y][pos.x]))
 			return (0);
@@ -24,7 +25,7 @@ static int	valid_pos(t_matrice matrice, t_pos pos)
 		return (0);
 }
 
-int		check_fill(t_tetrimino tetrimino, t_matrice matrice, t_pos pos)
+int			check_fill(t_tetrimino tetrimino, t_matrice matrice, t_pos pos)
 {
 	int	tmp;
 	int last;
@@ -53,7 +54,7 @@ int		check_fill(t_tetrimino tetrimino, t_matrice matrice, t_pos pos)
 	return (1);
 }
 
-char	**fill(t_tetrimino tetrimino, t_matrice matrice, t_pos pos)
+char		**fill(t_tetrimino tetrimino, t_matrice matrice, t_pos pos)
 {
 	int	tmp;
 	int last;
@@ -82,7 +83,7 @@ char	**fill(t_tetrimino tetrimino, t_matrice matrice, t_pos pos)
 	return (matrice.map);
 }
 
-char	**unfill(t_tetrimino tetrimino, t_matrice matrice, t_pos pos)
+char		**unfill(t_tetrimino tetrimino, t_matrice matrice, t_pos pos)
 {
 	int	tmp;
 	int last;

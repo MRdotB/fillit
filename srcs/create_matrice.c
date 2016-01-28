@@ -6,7 +6,7 @@
 /*   By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 14:43:36 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/01/27 14:43:43 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/01/28 21:05:46 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static t_matrice	fill_matrice(t_matrice matrice)
 
 t_matrice			create_matrice(unsigned int x, unsigned int y)
 {
-	t_matrice		matrice;	
+	t_matrice		matrice;
 	char			**map;
 	unsigned int	i;
 
@@ -47,5 +47,5 @@ t_matrice			create_matrice(unsigned int x, unsigned int y)
 	matrice.map = map;
 	matrice.size_x = x - 1;
 	matrice.size_y = y - 1;
-	return (fill_matrice(matrice));	
+	return (fill_matrice(matrice));
 }
