@@ -6,7 +6,7 @@
 #    By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/12 16:21:36 by bchaleil          #+#    #+#              #
-#    Updated: 2016/01/27 15:15:22 by bchaleil         ###   ########.fr        #
+#    Updated: 2016/01/29 00:29:23 by bchaleil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,10 @@ SUCCESS			=	[ $(C_GOOD)OK$(C_NO) ]
 OK				=	[ $(C_OK)OK$(C_NO) ]
 
 
-all: obj $(NAME)
+all: ascii obj $(NAME)
+
+ascii:
+	@printf "%s\n%s\n%s\n%s\n%s\n%s\n" "  _____.__.__  .__  .__  __" "_/ ____\__|  | |  | |__|/  |_"  "\\   __\\|  |  | |  | |  \   __\\" " |  |  |  |  |_|  |_|  ||  |" " |__|  |__|____/____/__||__|"
 
 $(NAME): $(LIB) $(OBJS)
 	@$(CC) $(FLAGS) -o $@ $^ $(LIB_LINK)
@@ -72,4 +75,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY:all $(NAME) $(LIB) obj clean fclean re
+.PHONY:all $(NAME) $(LIB) ascii obj clean fclean re
