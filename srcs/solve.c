@@ -6,7 +6,7 @@
 /*   By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 11:54:37 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/01/26 20:27:47 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/01/27 15:29:18 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,17 @@ void	display_matrice(t_matrice matrice)
 			ft_putchar(matrice.map[y][x]);	
 			x++;
 		}
+		while (x < 4)
+		{
+			ft_putchar('.');
+			x++;
+		}
 		ft_putchar('\n');
+		y++;
+	}
+	while (y < 4)
+	{
+		ft_putstr("....\n");
 		y++;
 	}
 }
@@ -59,7 +69,6 @@ char	**recurse_solve(t_matrice matrice, t_tetrimino *tetri_list, t_pos pos)
 	if (check_fill(*tetri_list, matrice, pos))
 	{
 		matrice.map = fill(*tetri_list, matrice, pos);
-		tetri_list->used = 1;
 		tmp = recurse_solve(matrice, tetri_list->next, return_pos(0, 0));
 		if (tmp == NULL)
 		{
@@ -77,11 +86,8 @@ void	solve(t_tetrimino *tetri_list)
 	int				len = 2;
 
 	matrice = create_matrice(len, len);
-	if (matrice.map == NULL)
-		printf("lourd");
 	while ((matrice.map = recurse_solve(matrice, tetri_list, return_pos(0, 0))) == NULL)
 	{
-		free(matrice.map);
 		matrice = create_matrice(len, len);
 		len++;
 	}

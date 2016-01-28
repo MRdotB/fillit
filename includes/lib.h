@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2100/01/01 00:00:00 by glodenos          #+#    #+#             */
-/*   Updated: 2016/01/26 17:50:27 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/01/27 14:39:31 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 typedef struct	s_tetrimino
 {
 	int					id;
-	int					used;
 	int					code;
 	struct s_tetrimino	*next;
 }				t_tetrimino;
