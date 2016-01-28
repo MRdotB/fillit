@@ -6,7 +6,7 @@
 /*   By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 15:04:36 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/01/26 17:46:43 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/01/27 14:59:01 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,10 +98,7 @@ int		get_tetriminos(char *file_name, t_tetrimino **tetri_list)
 		if (valid_tetramino(code))
 			bc_list_push(tetri_list, i, code);	
 		else
-		{
-			printf("\ncode = %d", code);
 			return (0);
-		}
 		i++;
 	}
 	return (1);
