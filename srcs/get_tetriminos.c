@@ -6,7 +6,7 @@
 /*   By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 15:04:36 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/01/27 14:59:01 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/01/28 20:59:49 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int		get_cursor_pos(char *matrice)
 	return (ret);
 }
 
-static	int		get_code(char *matrice)
+static int		get_code(char *matrice)
 {
 	int	pos;
 	int i;
@@ -69,7 +69,7 @@ static	int		get_code(char *matrice)
 	return (code);
 }
 
-static	int		valid_tetramino(int code)
+static int		valid_tetramino(int code)
 {
 	int	*codes;
 	int i;
@@ -78,11 +78,11 @@ static	int		valid_tetramino(int code)
 	i = 0;
 	while (codes[i] != -1337)
 		if (codes[i++] == code)
-			return (1);	
+			return (1);
 	return (0);
 }
 
-int		get_tetriminos(char *file_name, t_tetrimino **tetri_list)
+int				get_tetriminos(char *file_name, t_tetrimino **tetri_list)
 {
 	char		*matrice;
 	int			tetraminos_count;
@@ -96,7 +96,7 @@ int		get_tetriminos(char *file_name, t_tetrimino **tetri_list)
 	{
 		code = get_code(matrice + (21 * i));
 		if (valid_tetramino(code))
-			bc_list_push(tetri_list, i, code);	
+			bc_list_push(tetri_list, i, code);
 		else
 			return (0);
 		i++;
