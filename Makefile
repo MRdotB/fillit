@@ -6,7 +6,7 @@
 #    By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/12 16:21:36 by bchaleil          #+#    #+#              #
-#    Updated: 2016/01/29 01:19:28 by bchaleil         ###   ########.fr        #
+#    Updated: 2016/01/29 01:34:30 by bchaleil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRCS			=\
 					srcs/bc_create_elem.c\
 					srcs/bc_list_push.c\
 					srcs/create_matrice.c\
+					srcs/free_matrice.c\
 					srcs/fill_methods.c\
 					srcs/solve.c\
 					srcs/ft_strlen.c\
@@ -56,7 +57,7 @@ $(NAME): $(OBJS)
 obj:
 	@mkdir -p obj
 
-obj/%.o: srcs/%.c ./includes/*.h
+obj/%.o: srcs/%.c ./includes/lib.h
 	@$(CC) $(FLAGS) $(INCLUDES) -c -o $@ $<
 	@echo "Linking" $< "\t" $(OK)
 

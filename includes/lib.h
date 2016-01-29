@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2100/01/01 00:00:00 by glodenos          #+#    #+#             */
-/*   Updated: 2016/01/29 01:17:47 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/01/29 02:03:55 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void			show_error(void);
 int				check_error1(char *file_name);
 int				*get_codes(void);
 char			*get_matrice(char *file_name);
+void			free_matrice(char ***str);
 int				get_tetriminos(char *file_name, t_tetrimino **tetri_list);
 t_tetrimino		*bc_create_elem(int id, int signature);
 void			bc_list_push(t_tetrimino **list, int id, int signature);

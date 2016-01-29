@@ -6,7 +6,7 @@
 /*   By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 11:54:37 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/01/28 20:57:21 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/01/29 02:19:52 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void			solve(t_tetrimino *lst)
 	matrice = create_matrice(len, len);
 	while ((matrice.map = recurse(matrice, lst, return_pos(0, 0))) == NULL)
 	{
+		free_matrice(&(matrice.map));
 		matrice = create_matrice(len, len);
 		len++;
 	}
