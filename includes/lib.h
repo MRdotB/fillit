@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2100/01/01 00:00:00 by glodenos          #+#    #+#             */
-/*   Updated: 2016/01/29 02:03:55 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/01/29 02:43:55 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 # include <stdlib.h>
 # include <sys/stat.h>
 # include <sys/types.h>
-# define EDGE(m, i) (m[i - 1] == '#' || m[i + 1] == '#'|| m[i + 5] == '#' || m[i - 5] == '#')
+# define S(c) (c == '#')
+# define EDGE(m, i) (S(m[i - 1]) || S(m[i + 1]) || S(m[i + 5]) || S(m[i - 5]))
 # define ISUPPER(c) (c >= 'A' && c <= 'Z')
 # define ISLOWER(c) (c >= 'a' && c <= 'z')
 # define ISALPHA(c) (ISLOWER(c) || ISUPPER(c))
