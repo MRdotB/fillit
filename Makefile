@@ -6,17 +6,14 @@
 #    By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/12 16:21:36 by bchaleil          #+#    #+#              #
-#    Updated: 2016/01/29 00:29:23 by bchaleil         ###   ########.fr        #
+#    Updated: 2016/01/29 01:19:28 by bchaleil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC				=	gcc
 NAME			=	fillit
 FLAGS			=	-Wall -Werror -Wextra
-LIB_PATH		=	libft/
-LIB				=	$(LIB_PATH)libft.a
-LIB_LINK		=	-L $(LIB_PATH) -lft
-INCLUDES		=	-I $(LIB_PATH) -I ./includes
+INCLUDES		=	-I ./includes
 SRCS			=\
 					srcs/main.c\
 					srcs/fillit.c\
@@ -29,7 +26,10 @@ SRCS			=\
 					srcs/bc_list_push.c\
 					srcs/create_matrice.c\
 					srcs/fill_methods.c\
-					srcs/solve.c
+					srcs/solve.c\
+					srcs/ft_strlen.c\
+					srcs/ft_putchar.c\
+					srcs/ft_putstr.c
 OBJS			=	$(SRCS:srcs/%.c=obj/%.o)
 
 # COLORS
@@ -49,12 +49,9 @@ all: ascii obj $(NAME)
 ascii:
 	@printf "%s\n%s\n%s\n%s\n%s\n%s\n" "  _____.__.__  .__  .__  __" "_/ ____\__|  | |  | |__|/  |_"  "\\   __\\|  |  | |  | |  \   __\\" " |  |  |  |  |_|  |_|  ||  |" " |__|  |__|____/____/__||__|"
 
-$(NAME): $(LIB) $(OBJS)
-	@$(CC) $(FLAGS) -o $@ $^ $(LIB_LINK)
+$(NAME): $(OBJS)
+	@$(CC) $(FLAGS) -o $@ $^
 	@echo "Compiling" $(NAME) "\t\t" $(SUCCESS)
-
-$(LIB):
-	@make -C $(LIB_PATH)
 
 obj:
 	@mkdir -p obj
@@ -70,7 +67,6 @@ clean:
 
 fclean: clean
 	@rm -f $(NAME)
-	@make -C $(LIB_PATH) fclean
 	@echo "Delete" $(NAME) "\t\t\t" $(OK)
 
 re: fclean all

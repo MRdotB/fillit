@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2100/01/01 00:00:00 by glodenos          #+#    #+#             */
-/*   Updated: 2016/01/27 14:39:31 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/01/29 01:17:47 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 # include <stdlib.h>
 # include <sys/stat.h>
 # include <sys/types.h>
-# include <stdio.h> //TEMP
-# include "libft.h"
 # define EDGE(m, i) (m[i - 1] == '#' || m[i + 1] == '#'|| m[i + 5] == '#' || m[i - 5] == '#')
 # define ISUPPER(c) (c >= 'A' && c <= 'Z')
 # define ISLOWER(c) (c >= 'a' && c <= 'z')
@@ -44,6 +42,9 @@ typedef struct	s_matrice
 	int		size_y;
 }				t_matrice;
 
+int				ft_strlen(char *str);
+void			ft_putchar(char c);
+void			ft_putstr(char *str);
 void			fillit(int ac, char **av);
 void			show_usage(void);
 void			show_error(void);
