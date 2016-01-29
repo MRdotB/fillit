@@ -6,7 +6,7 @@
 /*   By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 11:54:37 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/01/29 02:19:52 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/01/29 14:09:17 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,7 @@ static void		display_matrice(t_matrice matrice)
 			ft_putchar(matrice.map[y][x]);
 			x++;
 		}
-		while (x < 4)
-		{
-			ft_putchar('.');
-			x++;
-		}
 		ft_putchar('\n');
-		y++;
-	}
-	while (y < 4)
-	{
-		ft_putstr("....\n");
 		y++;
 	}
 }
