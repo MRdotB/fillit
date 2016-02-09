@@ -6,7 +6,7 @@
 /*   By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 11:54:37 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/01/29 14:09:17 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/02/09 18:19:36 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,17 @@ static void		display_matrice(t_matrice matrice)
 	}
 }
 
+#include <stdio.h>
+
 static char		**recurse(t_matrice matrice, t_tetrimino *lst, t_pos pos)
 {
 	char	**tmp;
 
 	if (lst == NULL)
 		return (matrice.map);
+//	printf(" id %d code %d x %d y %d", lst->id + 1, lst->code, pos.x, pos.y);
+//	display_matrice(matrice);
+//	printf("___________________________________\n");
 	if ((pos.x == matrice.size_x && pos.y == matrice.size_y))
 		return (NULL);
 	if (check_fill(*lst, matrice, pos))
@@ -70,12 +75,37 @@ static char		**recurse(t_matrice matrice, t_tetrimino *lst, t_pos pos)
 	return (recurse(matrice, lst, pos_modulo(pos, matrice.size_y + 1)));
 }
 
+int				nl_sqrt(int total)
+{
+	int		i;
+
+	i = 1;
+	while (i * i <= total)
+			i++;
+	return (i);
+}
+
+int				list_count(t_tetrimino *lst)
+{
+	int i;
+	t_tetrimino *tmp;
+
+	i = 0;
+	tmp = lst;
+	while (tmp)
+	{
+		i++;
+		tmp = tmp->next;
+	}
+	return (i);
+}
+
 void			solve(t_tetrimino *lst)
 {
 	t_matrice		matrice;
 	int				len;
 
-	len = 2;
+	len = nl_sqrt(list_count(lst));
 	matrice = create_matrice(len, len);
 	while ((matrice.map = recurse(matrice, lst, return_pos(0, 0))) == NULL)
 	{
