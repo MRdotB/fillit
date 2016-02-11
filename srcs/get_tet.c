@@ -1,75 +1,73 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_tetriminos.c                                   :+:      :+:    :+:   */
+/*   get_tet.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 15:04:36 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/01/28 20:59:49 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/02/11 15:56:14 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
 
-static int		get_cursor_pos(char *matrice)
+static int		get_colone_y(char *matrix)
 {
 	int		i;
 	int		r;
 	int		ret;
 
-	i = 0;
+	i = -1;
 	r = 0;
 	ret = 1337;
-	while (i < 20)
+	while (++i < 20)
 	{
-		if (matrice[i] == '#')
+		if (matrix[i] == '#')
 		{
 			if (r == 0)
 				return (0);
 			if (r < ret)
 				ret = r;
-			while (matrice[i] != '\n')
+			while (matrix[i] != '\n')
 				i++;
 		}
 		r++;
-		if (matrice[i] == '\n')
+		if (matrix[i] == '\n')
 			r = 0;
-		i++;
 	}
 	return (ret);
 }
 
-static int		get_code(char *matrice)
+static int		get_code(char *matrix)
 {
 	int	pos;
 	int i;
 	int j;
 	int code;
 
-	pos = get_cursor_pos(matrice);
-	i = pos;
+	pos = get_colone_y(matrix);
+	i = pos - 1;
 	j = 1;
 	code = 0;
-	while (i < 20)
+	while (++i < 20)
 	{
-		if (matrice[i] == '#' && EDGE(matrice, i))
+		if (matrix[i] == '#' && EDGE(matrix, i))
 		{
 			code *= 10;
 			code += j;
 		}
 		j++;
-		if (matrice[i] == '\n')
+		if (matrix[i] == '\n')
 		{
 			j = 1;
 			i += pos;
 		}
-		i++;
 	}
 	return (code);
 }
 
-static int		valid_tetramino(int code)
+static int		valid_tet(int code)
 {
 	int	*codes;
 	int i;
@@ -82,21 +80,21 @@ static int		valid_tetramino(int code)
 	return (0);
 }
 
-int				get_tetriminos(char *file_name, t_tetrimino **tetri_list)
+int				get_tet(char *file_name, t_tet **tetri_list)
 {
-	char		*matrice;
-	int			tetraminos_count;
+	char		*matrix;
+	int			tet_count;
 	int			i;
 	int			code;
 
-	matrice = get_matrice(file_name);
-	tetraminos_count = ((ft_strlen(matrice) + 1) / 21);
+	matrix = get_matrix(file_name);
+	tet_count = ((ft_strlen(matrix) + 1) / 21);
 	i = 0;
-	while (i < tetraminos_count)
+	while (i < tet_count)
 	{
-		code = get_code(matrice + (21 * i));
-		if (valid_tetramino(code))
-			bc_list_push(tetri_list, i, code);
+		code = get_code(matrix + (21 * i));
+		if (valid_tet(code))
+			push_list(tetri_list, i, code);
 		else
 			return (0);
 		i++;

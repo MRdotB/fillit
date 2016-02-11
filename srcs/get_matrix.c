@@ -6,7 +6,7 @@
 /*   By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 14:59:30 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/01/28 21:00:58 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/02/11 11:03:43 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static char		*bt_concat(char c, char *str)
 	return (r);
 }
 
-char			*get_matrice(char *file_name)
+char			*get_matrix(char *file)
 {
 	int		fd;
 	char	buf;
@@ -42,7 +42,7 @@ char			*get_matrice(char *file_name)
 	if (r == NULL)
 		return (NULL);
 	r[0] = '\0';
-	fd = open(file_name, O_RDONLY);
+	fd = open(file, O_RDONLY);
 	while (read(fd, &buf, 1))
 		r = bt_concat(buf, r);
 	close(fd);

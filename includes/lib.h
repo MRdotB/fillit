@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2100/01/01 00:00:00 by glodenos          #+#    #+#             */
-/*   Updated: 2016/01/29 02:43:55 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/02/11 15:52:14 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,46 +20,42 @@
 # define S(c) (c == '#')
 # define EDGE(m, i) (S(m[i - 1]) || S(m[i + 1]) || S(m[i + 5]) || S(m[i - 5]))
 # define ISUPPER(c) (c >= 'A' && c <= 'Z')
-# define ISLOWER(c) (c >= 'a' && c <= 'z')
-# define ISALPHA(c) (ISLOWER(c) || ISUPPER(c))
 
-typedef struct	s_tetrimino
+typedef struct		s_matrix
 {
-	int					id;
-	int					code;
-	struct s_tetrimino	*next;
-}				t_tetrimino;
+	char			**map;
+	int				size_x;
+	int				size_y;
+}					t_matrix;
 
-typedef struct	s_pos
+typedef struct		s_pos
 {
-	int	x;
-	int	y;
-}				t_pos;
+	int				x;
+	int				y;
+}					t_pos;
 
-typedef struct	s_matrice
+typedef struct		s_tet
 {
-	char	**map;
-	int		size_x;
-	int		size_y;
-}				t_matrice;
+	int				id;
+	int				code;
+	struct s_tet	*next;
+}					t_tet;
 
-int				ft_strlen(char *str);
+int				check_error(char *file);
+int				check_fill(t_tet tet, t_matrix matrix, t_pos pos);
+t_matrix		create_matrix(unsigned int x, unsigned int y);
+char			**fill(int code, t_matrix matrix, t_pos pos, char ascii);
+void			free_matrix(char **str, int size_y);
 void			ft_putchar(char c);
-void			ft_putstr(char *str);
-void			fillit(int ac, char **av);
-void			show_usage(void);
-void			show_error(void);
-int				check_error1(char *file_name);
+int				ft_strlen(char *str);
 int				*get_codes(void);
-char			*get_matrice(char *file_name);
-void			free_matrice(char ***str);
-int				get_tetriminos(char *file_name, t_tetrimino **tetri_list);
-t_tetrimino		*bc_create_elem(int id, int signature);
-void			bc_list_push(t_tetrimino **list, int id, int signature);
-void			solve(t_tetrimino *tetri_list);
-t_matrice		create_matrice(unsigned int x, unsigned int y);
-int				check_fill(t_tetrimino tetrimino, t_matrice matrice, t_pos pos);
-char			**fill(t_tetrimino tetrimino, t_matrice matrice, t_pos pos);
-char			**unfill(t_tetrimino tetrimino, t_matrice matrice, t_pos pos);
+char			*get_matrix(char *file);
+int				get_tet(char *file_name, t_tet **tetri_list);
+int				list_count(t_tet *lst);
+int				nk_sqrt(int total);
+void			push_list(t_tet **list, int id, int code);
+void			show_error(void);
+void			show_usage(void);
+void			solve(t_tet *tetri_list);
 
 #endif

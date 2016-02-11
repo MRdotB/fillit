@@ -6,7 +6,7 @@
 #    By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/12 16:21:36 by bchaleil          #+#    #+#              #
-#    Updated: 2016/01/29 01:34:30 by bchaleil         ###   ########.fr        #
+#    Updated: 2016/02/11 14:12:38 by glodenos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,23 +14,16 @@ CC				=	gcc
 NAME			=	fillit
 FLAGS			=	-Wall -Werror -Wextra
 INCLUDES		=	-I ./includes
-SRCS			=\
-					srcs/main.c\
-					srcs/fillit.c\
-					srcs/show_methods.c\
-					srcs/check_error1.c\
-					srcs/get_tetriminos.c\
-					srcs/get_matrice.c\
-					srcs/get_codes.c\
-					srcs/bc_create_elem.c\
-					srcs/bc_list_push.c\
-					srcs/create_matrice.c\
-					srcs/free_matrice.c\
+SRCS			=	srcs/error.c\
 					srcs/fill_methods.c\
-					srcs/solve.c\
-					srcs/ft_strlen.c\
-					srcs/ft_putchar.c\
-					srcs/ft_putstr.c
+					srcs/other.c\
+					srcs/get_codes.c\
+					srcs/get_matrix.c\
+					srcs/get_tet.c\
+					srcs/main.c\
+					srcs/matrix.c\
+					srcs/push_list.c\
+					srcs/solve.c
 OBJS			=	$(SRCS:srcs/%.c=obj/%.o)
 
 # COLORS

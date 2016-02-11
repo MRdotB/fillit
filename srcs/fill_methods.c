@@ -6,18 +6,18 @@
 /*   By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 18:47:04 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/01/28 21:04:30 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/02/11 14:10:56 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
 
-static int	valid_pos(t_matrice matrice, t_pos pos)
+static int	valid_pos(t_matrix matrix, t_pos pos)
 {
 	if (pos.x >= 0 && pos.y >= 0 &&
-			pos.x <= matrice.size_x && pos.y <= matrice.size_y)
+			pos.x <= matrix.size_x && pos.y <= matrix.size_y)
 	{
-		if (ISUPPER(matrice.map[pos.y][pos.x]))
+		if (ISUPPER(matrix.map[pos.y][pos.x]))
 			return (0);
 		return (1);
 	}
@@ -25,7 +25,7 @@ static int	valid_pos(t_matrice matrice, t_pos pos)
 		return (0);
 }
 
-int			check_fill(t_tetrimino tetrimino, t_matrice matrice, t_pos pos)
+int			check_fill(t_tet tet, t_matrix matrix, t_pos pos)
 {
 	int	tmp;
 	int last;
@@ -35,8 +35,8 @@ int			check_fill(t_tetrimino tetrimino, t_matrice matrice, t_pos pos)
 	last = 0;
 	while (d != 0)
 	{
-		tmp = tetrimino.code / d;
-		tetrimino.code %= d;
+		tmp = tet.code / d;
+		tet.code %= d;
 		d /= 10;
 		if (last == tmp && last != 0)
 			pos.y++;
@@ -47,26 +47,26 @@ int			check_fill(t_tetrimino tetrimino, t_matrice matrice, t_pos pos)
 		}
 		else if (last < tmp && last != 0)
 			pos.x -= last - tmp;
-		if (!(valid_pos(matrice, pos)))
+		if (!(valid_pos(matrix, pos)))
 			return (0);
 		last = tmp;
 	}
 	return (1);
 }
 
-char		**fill(t_tetrimino tetrimino, t_matrice matrice, t_pos pos)
+char		**fill(int code, t_matrix matrix, t_pos pos, char ascii)
 {
-	int	tmp;
-	int last;
-	int d;
+	int		tmp;
+	int		last;
+	int		d;
 
 	d = 1000;
 	last = 0;
 	tmp = 0;
 	while (d != 0)
 	{
-		tmp = tetrimino.code / d;
-		tetrimino.code %= d;
+		tmp = code / d;
+		code %= d;
 		d /= 10;
 		if (last == tmp && last != 0)
 			pos.y++;
@@ -77,37 +77,8 @@ char		**fill(t_tetrimino tetrimino, t_matrice matrice, t_pos pos)
 		}
 		else if (last < tmp && last != 0)
 			pos.x -= last - tmp;
-		matrice.map[pos.y][pos.x] = tetrimino.id + 65;
+		matrix.map[pos.y][pos.x] = ascii;
 		last = tmp;
 	}
-	return (matrice.map);
-}
-
-char		**unfill(t_tetrimino tetrimino, t_matrice matrice, t_pos pos)
-{
-	int	tmp;
-	int last;
-	int d;
-
-	d = 1000;
-	last = 0;
-	tmp = 0;
-	while (d != 0)
-	{
-		tmp = tetrimino.code / d;
-		tetrimino.code %= d;
-		d /= 10;
-		if (last == tmp && last != 0)
-			pos.y++;
-		else if (last > tmp && last != 0)
-		{
-			pos.x += tmp - last;
-			pos.y++;
-		}
-		else if (last < tmp && last != 0)
-			pos.x -= last - tmp;
-		matrice.map[pos.y][pos.x] = '.';
-		last = tmp;
-	}
-	return (matrice.map);
+	return (matrix.map);
 }

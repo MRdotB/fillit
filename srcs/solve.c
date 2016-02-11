@@ -6,7 +6,7 @@
 /*   By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 11:54:37 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/02/09 18:19:36 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/02/11 15:16:44 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,90 +29,56 @@ static t_pos	pos_modulo(t_pos pos, int len)
 	return (pos);
 }
 
-static void		display_matrice(t_matrice matrice)
+static void		display_matrix(t_matrix matrix)
 {
 	int	y;
 	int	x;
 
-	y = 0;
-	while (y <= matrice.size_y)
+	y = -1;
+	while (++y <= matrix.size_y)
 	{
-		x = 0;
-		while (x <= matrice.size_x)
-		{
-			ft_putchar(matrice.map[y][x]);
-			x++;
-		}
+		x = -1;
+		while (++x <= matrix.size_x)
+			ft_putchar(matrix.map[y][x]);
 		ft_putchar('\n');
-		y++;
 	}
 }
 
-#include <stdio.h>
-
-static char		**recurse(t_matrice matrice, t_tetrimino *lst, t_pos pos)
+static char		**recurse(t_matrix matrix, t_tet *lst, t_pos pos)
 {
-	char	**tmp;
+	char		**tmp;
 
 	if (lst == NULL)
-		return (matrice.map);
-//	printf(" id %d code %d x %d y %d", lst->id + 1, lst->code, pos.x, pos.y);
-//	display_matrice(matrice);
-//	printf("___________________________________\n");
-	if ((pos.x == matrice.size_x && pos.y == matrice.size_y))
+		return (matrix.map);
+	if ((pos.x == matrix.size_x && pos.y == matrix.size_y))
 		return (NULL);
-	if (check_fill(*lst, matrice, pos))
+	if (check_fill(*lst, matrix, pos))
 	{
-		matrice.map = fill(*lst, matrice, pos);
-		tmp = recurse(matrice, lst->next, return_pos(0, 0));
+		matrix.map = fill(lst->code, matrix, pos, lst->id + 65);
+		tmp = recurse(matrix, lst->next, return_pos(0, 0));
 		if (tmp == NULL)
 		{
-			matrice.map = unfill(*lst, matrice, pos);
-			return (recurse(matrice, lst, pos_modulo(pos, matrice.size_y + 1)));
+			matrix.map = fill(lst->code, matrix, pos, '.');
+			return (recurse(matrix, lst, pos_modulo(pos, matrix.size_y + 1)));
 		}
 		return (tmp);
 	}
-	return (recurse(matrice, lst, pos_modulo(pos, matrice.size_y + 1)));
+	return (recurse(matrix, lst, pos_modulo(pos, matrix.size_y + 1)));
 }
 
-int				nl_sqrt(int total)
+void			solve(t_tet *lst)
 {
-	int		i;
+	t_matrix	matrix;
+	int			len;
 
-	i = 1;
-	while (i * i <= total)
-			i++;
-	return (i);
-}
-
-int				list_count(t_tetrimino *lst)
-{
-	int i;
-	t_tetrimino *tmp;
-
-	i = 0;
-	tmp = lst;
-	while (tmp)
+	len = nk_sqrt(list_count(lst));
+	matrix = create_matrix(len, len);
+	while ((matrix.map = recurse(matrix, lst, return_pos(0, 0))) == NULL)
 	{
-		i++;
-		tmp = tmp->next;
-	}
-	return (i);
-}
-
-void			solve(t_tetrimino *lst)
-{
-	t_matrice		matrice;
-	int				len;
-
-	len = nl_sqrt(list_count(lst));
-	matrice = create_matrice(len, len);
-	while ((matrice.map = recurse(matrice, lst, return_pos(0, 0))) == NULL)
-	{
-		free_matrice(&(matrice.map));
-		matrice = create_matrice(len, len);
+		free_matrix(matrix.map, matrix.size_y);
+		matrix = create_matrix(len, len);
 		len++;
 	}
-	if (matrice.map)
-		display_matrice(matrice);
+	if (matrix.map)
+		display_matrix(matrix);
 }
