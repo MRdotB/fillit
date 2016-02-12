@@ -6,7 +6,7 @@
 /*   By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/17 17:19:07 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/02/10 15:54:54 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/02/12 18:25:42 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int		check_error_ex(int fd, char buf, int count, int sharp)
 {
 	while (read(fd, &buf, 1))
 	{
-		sharp = (buf == '#') ? sharp + 1 : sharp + 0;
+		sharp += (buf == '#') ? 1 : 0;
 		if (++count % 5 == 0)
 		{
 			if (buf != '\n')
