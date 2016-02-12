@@ -6,7 +6,7 @@
 /*   By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 15:04:36 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/02/12 16:10:13 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/02/12 17:14:14 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ int				get_tet(char *file_name, t_tet **tetri_list)
 
 	matrix = get_matrix(file_name);
 	tet_count = ((ft_strlen(matrix) + 1) / 21);
+	if (tet_count == 0)
+		return (0);
 	i = 0;
 	while (i < tet_count)
 	{
