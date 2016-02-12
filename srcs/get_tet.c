@@ -6,7 +6,7 @@
 /*   By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 15:04:36 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/02/11 15:56:14 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/02/12 16:10:13 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,14 @@ static int		valid_tet(int code)
 	codes = get_codes();
 	i = 0;
 	while (codes[i] != -1337)
+	{
 		if (codes[i++] == code)
+		{
+			free(codes);
 			return (1);
+		}
+	}
+	free(codes);
 	return (0);
 }
 
