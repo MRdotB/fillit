@@ -6,7 +6,7 @@
 #    By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/12 16:21:36 by bchaleil          #+#    #+#              #
-#    Updated: 2016/02/11 14:12:38 by glodenos         ###   ########.fr        #
+#    Updated: 2016/02/12 17:27:22 by bchaleil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ FLAGS			=	-Wall -Werror -Wextra
 INCLUDES		=	-I ./includes
 SRCS			=	srcs/error.c\
 					srcs/fill_methods.c\
-					srcs/other.c\
+					srcs/lib.c\
 					srcs/get_codes.c\
 					srcs/get_matrix.c\
 					srcs/get_tet.c\
