@@ -6,7 +6,7 @@
 /*   By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 14:43:36 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/02/11 12:58:59 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/02/12 16:19:47 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void				free_matrix(char **map, int size_y)
 {
-	(void)size_y;
+	while (size_y--)
+		free(*(map++));
 	map = NULL;
 }
 

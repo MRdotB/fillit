@@ -6,7 +6,7 @@
 /*   By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 11:54:37 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/02/11 15:16:44 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/02/12 17:11:58 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,9 @@ void			solve(t_tet *lst)
 	matrix = create_matrix(len, len);
 	while ((matrix.map = recurse(matrix, lst, return_pos(0, 0))) == NULL)
 	{
-		free_matrix(matrix.map, matrix.size_y);
 		matrix = create_matrix(len, len);
 		len++;
 	}
-	if (matrix.map)
-		display_matrix(matrix);
+	display_matrix(matrix);
+	free_matrix(matrix.map, matrix.size_y);
 }
