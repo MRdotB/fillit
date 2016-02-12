@@ -6,7 +6,7 @@
 /*   By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 11:54:37 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/02/12 17:11:58 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/02/12 18:18:20 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,6 @@ void			solve(t_tet *lst)
 		len++;
 	}
 	display_matrix(matrix);
+	free_lst(lst);
 	free_matrix(matrix.map, matrix.size_y);
 }

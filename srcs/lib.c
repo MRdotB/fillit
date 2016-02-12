@@ -6,7 +6,7 @@
 /*   By: bchaleil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/12 17:21:44 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/02/12 17:21:53 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/02/12 18:18:32 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,16 @@ int			ft_strlen(char *str)
 void		ft_putchar(char c)
 {
 	write(1, &c, 1);
+}
+
+void		free_lst(t_tet *lst)
+{
+	t_tet *tmp;
+
+	while (lst)
+	{
+		tmp = lst->next;
+		free(lst);
+		lst = tmp;
+	}
 }

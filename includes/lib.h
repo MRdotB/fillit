@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2100/01/01 00:00:00 by glodenos          #+#    #+#             */
-/*   Updated: 2016/02/11 15:52:14 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/02/12 18:16:16 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ void			push_list(t_tet **list, int id, int code);
 void			show_error(void);
 void			show_usage(void);
 void			solve(t_tet *tetri_list);
+void			free_lst(t_tet *lst);
 
 #endif
