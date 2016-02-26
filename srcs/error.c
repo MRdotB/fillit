@@ -6,7 +6,7 @@
 /*   By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/17 17:19:07 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/02/12 18:25:42 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/02/26 18:02:51 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void			show_error(void)
 {
-	write(2, "error\n", 6);
+	write(1, "error\n", 6);
 }
 
 void			show_usage(void)
