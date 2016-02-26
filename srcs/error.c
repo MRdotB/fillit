@@ -6,7 +6,7 @@
 /*   By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/17 17:19:07 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/02/26 18:02:51 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/02/26 19:14:49 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,11 @@ static int		check_error_ex(int fd, char buf, int count, int sharp)
 	{
 		sharp += (buf == '#') ? 1 : 0;
 		if (++count % 5 == 0)
-		{
 			if (buf != '\n')
 				return (0);
-		}
-		else
-		{
+		if (count % 5 != 0)
 			if (buf != '.' && buf != '#')
 				return (0);
-		}
 		if (count == 20)
 		{
 			if (sharp != 4)
@@ -45,6 +41,8 @@ static int		check_error_ex(int fd, char buf, int count, int sharp)
 			sharp = 0;
 		}
 	}
+	if (count != -1)
+		return (0);
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 15:04:36 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/02/12 17:14:14 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/02/26 19:11:08 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,40 @@ static int		get_colone_y(char *matrix)
 	return (ret);
 }
 
+static int		edge_count(char *matrix, int i)
+{
+	int	c;
+
+	c = 0;
+	if (matrix[i - 1] == '#')
+		c++;
+	if (matrix[i + 1] == '#')
+		c++;
+	if (matrix[i - 5] == '#')
+		c++;
+	if (matrix[i + 5] == '#')
+		c++;
+	return (c);
+}
+
 static int		get_code(char *matrix)
 {
 	int	pos;
 	int i;
 	int j;
 	int code;
+	int	count;
 
 	pos = get_colone_y(matrix);
 	i = pos - 1;
 	j = 1;
 	code = 0;
+	count = 0;
 	while (++i < 20)
 	{
 		if (matrix[i] == '#' && EDGE(matrix, i))
 		{
+			count += edge_count(matrix, i); 
 			code *= 10;
 			code += j;
 		}
@@ -64,6 +83,8 @@ static int		get_code(char *matrix)
 			i += pos;
 		}
 	}
+	if (count < 5)
+		return (0);
 	return (code);
 }
 
