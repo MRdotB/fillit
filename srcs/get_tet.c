@@ -6,7 +6,7 @@
 /*   By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 15:04:36 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/02/26 19:11:08 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/02/29 11:03:55 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,24 +55,20 @@ static int		edge_count(char *matrix, int i)
 	return (c);
 }
 
-static int		get_code(char *matrix)
+static int		get_code(char *matrix, int code, int count)
 {
 	int	pos;
 	int i;
 	int j;
-	int code;
-	int	count;
 
 	pos = get_colone_y(matrix);
 	i = pos - 1;
 	j = 1;
-	code = 0;
-	count = 0;
 	while (++i < 20)
 	{
 		if (matrix[i] == '#' && EDGE(matrix, i))
 		{
-			count += edge_count(matrix, i); 
+			count += edge_count(matrix, i);
 			code *= 10;
 			code += j;
 		}
@@ -83,9 +79,7 @@ static int		get_code(char *matrix)
 			i += pos;
 		}
 	}
-	if (count < 5)
-		return (0);
-	return (code);
+	return (count < 5) ? (0) : (code);
 }
 
 static int		valid_tet(int code)
@@ -121,7 +115,7 @@ int				get_tet(char *file_name, t_tet **tetri_list)
 	i = 0;
 	while (i < tet_count)
 	{
-		code = get_code(matrix + (21 * i));
+		code = get_code(matrix + (21 * i), 0, 0);
 		if (valid_tet(code))
 			push_list(tetri_list, i, code);
 		else
